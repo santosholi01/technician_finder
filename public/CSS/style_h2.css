@@ -1,0 +1,106 @@
+
+
+/* Set height and width for all images */
+.service img {
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    object-fit: cover; /* Ensure images maintain aspect ratio */
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+    transition: transform 0.3s ease; /* Add transition effect */
+}
+
+/* Apply hover effect to images */
+.service img:hover {
+    transform: scale(1.1); /* Increase size on hover */
+}
+
+/* Style for service containers */
+.service {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease; /* Add transition effect */
+}
+
+/* Apply hover effect to service containers */
+.service:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+
+
+body {
+    font-family: "Ubuntu", sans-serif;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.services-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.service {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.service img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.service h2 {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.service p {
+    font-size: 14px;
+    color: #666;
+}
+
+.service a {
+    display: block;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.service a:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+

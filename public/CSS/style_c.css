@@ -1,0 +1,104 @@
+body, html {
+    font-family: "Ubuntu", sans-serif;
+    font-style: normal;
+    background-color: #24232e;
+    /* margin: 0; */
+    padding: 0;
+
+    /*Added Code for center*/
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+} */
+/*Added cotainer*/
+.container {
+    /* width: 50%; */
+    max-width: 600px; /* Adjust width as needed */
+    margin: 0 auto; /* Center horizontally */
+    /*margin-top: 0 auto; /* Center vertically */
+    padding: 2rem;
+    background-color: #fff; /* White background */
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+
+
+h1 {
+    text-align: center;
+    font-weight: bold; /* Adjust weight as needed */
+    margin-bottom: 1rem;
+    color: #333; /* Darker for better contrast */
+    font-size: 1.8rem; /* Adjust size */
+}
+
+.form-container {
+    /* background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px; */
+    margin-top: 2rem;
+
+}
+/* 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} */
+
+input[type="text"],
+input[type="tel"],
+input[type="password"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #444;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #222;
+}
+
+/* Header */
+.header-div {
+    text-align: center;
+}

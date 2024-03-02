@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Map Example</title>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDs49KWRe5mgGEzzMHTnGbUXXVZBYhpTCM">
+    </script>
+</head>
+
+<body>
+    <div id="map" style="height: 400px;"></div>
+    <script>
+        function initMap() {
+            // Replace with your desired map options (center, zoom, map type, etc.)
+            var mapOptions = {
+                center: new google.maps.LatLng(27.6770925, 85.3314444),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            // Create a new map instance
+            var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            // Optional: Add a marker (replace with your marker options)
+            var marker = new google.maps.Marker({
+                position: mapOptions.center,
+                map: map,
+                title: 'My Location',
+                draggable: true
+            });
+        }
+
+        // Call the initMap function when the page loads
+        window.addEventListener('load', initMap);
+    </script>
+</body>
+
+</html>

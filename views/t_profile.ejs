@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/t_profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Technician Profile</title>
+</head>
+<body>
+    <header>
+        <h1>Technician Profile</h1><br>
+        <!-- <a href='/'>Go to login page</a> -->
+        <form action="/logout" method="post">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-info">
+            <h2><%= techniciandata.firstName %> <%= techniciandata.lastName %></h2>
+            <p><%= techniciandata.service %></p>
+            <p><%= techniciandata.location %></p>
+            <!-- <p>5 years of experience</p>
+            <p>Rating: 4.8 stars (100 reviews)</p> -->
+            <a href="#">Edit Profile</a>
+        </div>
+
+        <div class="services">
+            <h3>Services That Should Be Offered</h3>
+            <% if (techniciandata.service === "Electrician") { %>
+                <ul>
+                    <li>Electrical repairs and installations</li>
+                    <li>Panel upgrades and rewiring</li>
+                    <li>Lighting fixtures and troubleshooting</li>
+                    <li>Appliance installation and repair</li>
+                </ul>
+            <% } else if (techniciandata.service === "Painting") { %>
+                <ul>
+                    <li>Interior painting</li>
+                    <li>Exterior painting</li>
+                    <li>Surface preparation and priming</li>
+                    <li>Trim and molding painting</li>
+                </ul>
+            <% } else if (techniciandata.service === "Plumbing") { %>
+                <ul>
+                    <li>Leak detection and repair</li>
+                    <li>Drain cleaning and unclogging</li>
+                    <li>Fixture installation and repair</li>
+                    <li>Water heater installation and repair</li>
+                </ul>
+            <% } %>
+            
+        </div>
+
+        <div class="contact">
+            <h3>Contact Information</h3>
+            <p>Phone: <%= techniciandata.name %></p>
+            <h3>location</h3>
+            <p>Location: <%=techniciandata.location %></p>
+            <!-- <p>Address: <%= techniciandata.location %></p> -->
+        </div>
+
+        <!-- <div class="availability">
+            <h3>Availability</h3>
+            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+            <p>Saturday: 10:00 AM - 2:00 PM</p>
+            <p>Closed on Sundays</p>
+        </div> -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Technician Finder</p>
+    </footer>
+
+    
+</body>
+</html>

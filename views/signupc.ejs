@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Signup</title>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn0SXIRdW_HYKlmrYILaMuF-xD5MCE3fk">
+    </script>
+    <link rel="stylesheet" href="../CSS/style_c.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-div">
+            <h1>Client Signup</h1>
+        </div>
+        <div class="form-container">
+            <form action="/signupc" method="POST">
+                <input type="text" name="firstName" placeholder="First Name" required>
+                <input type="text" name="lastName" placeholder="Last Name" required>
+                <!-- <input type="text" name="contactNo" placeholder="Contact Number" required> -->
+                <!-- <input type="tel" name="contactNo" pattern="[0-9]{10}" maxlength="10" placeholder="Contact Number" required> -->
+                <input type="tel" name="contactNo" pattern="[0-9]{10}" maxlength="10" placeholder="Contact Number"
+                    required onkeypress="return isNumberKey(event)">
+                <script>
+                    function isNumberKey(event) {
+                        var charCode = (event.which) ? event.which : event.keyCode;
+                        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                            event.preventDefault();
+                            return false;
+                        }
+                        return true;
+                    }
+                </script>
+
+
+                <!-- <label for="location">Select Location:</label>
+                <select id="location" name="location" required>
+                    <option value="Kathmandu">Kathmandu</option>
+                    <option value="Bhaktapur">Bhaktapur</option>
+                    <option value="Lalitpur">Lalitpur</option>
+                </select> -->
+
+                <!-- Added Code -->
+                <script
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn0SXIRdW_HYKlmrYILaMuF-xD5MCE3fk&libraries=places">
+                </script>
+                <label for="map">Select Location:</label><br>
+                <div id="map" style="height: 400px;"></div>
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+
+                <script>
+                    function initMap() {
+                        // Replace with your desired map options (center, zoom, map type, etc.)
+                        var mapOptions = {
+                            center: new google.maps.LatLng(27.6770925, 85.3314444),
+                            zoom: 12,
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        };
+
+                        // Create a new map instance
+                        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                        // Optional: Add a marker (replace with your marker options)
+                        var marker = new google.maps.Marker({
+                            position: mapOptions.center,
+                            map: map,
+                            title: 'My Location',
+                            draggable: true
+                        });
+
+                        google.maps.event.addListener(marker, 'dragend', function (event) {
+                            document.getElementById('latitude').value = event.latLng.lat();
+                            document.getElementById('longitude').value = event.latLng.lng();
+                        });
+                    }
+
+                    // Call the initMap function when the page loads
+                    window.addEventListener('load', initMap);
+                </script>
+                <br>
+
+
+
+
+
+                <input type="password" name="password" placeholder="Password" required>
+                <!-- <form action="/home" method="POST"> -->
+                <!-- <button type="submit">Login</button> -->
+                <div class="button-container">
+                    <button type="submit">Sign Up</button>
+                </div>
+                <!-- </form> -->
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

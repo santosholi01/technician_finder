@@ -1,0 +1,82 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+h1 {
+    color: #fff;
+    font-weight: bold;
+}
+h2, h3 {
+    margin-bottom: 0.5rem;
+}
+
+.profile-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-info {
+    flex: 1 0 300px;
+    padding: 1rem;
+}
+
+.services, .contact, .availability {
+    flex: 1 0 300px;
+    padding: 1rem;
+}
+
+.profile-info p {
+    line-height: 1.5;
+}
+
+a, button {
+    background-color: #444; /* Primary button color */
+    color: #fff; /* White text */
+    padding: 0.5rem 7rem; /* Consistent padding */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* For consistent spacing */
+    cursor: pointer; /* Indicate interactivity */
+    transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+a, button:hover {
+    background-color: #222;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: #fff;
+}
+
+
+/* Responsiveness (optional) */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+    .profile-info, .services, .contact, .availability {
+        flex: 1 0 100%;
+    }
+}

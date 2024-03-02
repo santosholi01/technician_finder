@@ -1,0 +1,70 @@
+/* technician_list.css */
+header {
+  text-align: center;
+  padding: 3rem 0; 
+  background-color: #333; /* Subtle background */
+  width: 100%; /* Set width to 100% */
+  border-bottom: 1px solid #ddd; /* Divider */
+}
+h1 {
+  font-size: 1.8rem; /* Adjust size */
+  font-weight: bold; /* Bold text */
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+  }
+  
+  .container {
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .technician-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .technician-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .technician-item:last-child {
+    border-bottom: none;
+  }
+  
+  .technician-info {
+    flex: 1; /* Expand to fill available space */
+    margin-left: 10px;
+  }
+  
+  .technician-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+  }
+  
+  .technician-info p {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  @media (max-width: 768px) {
+    .technician-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .technician-info {
+      margin-left: 0;
+    }
+  }
+  

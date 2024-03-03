@@ -18,9 +18,12 @@
             <% technicianlist.forEach(technician => { %>
             <li class="technician-item">
                 <div class="technician-info">
-                    <h2>Name: <%= technician.firstName %> <%= technician.lastName %></h2>
+                   <!-- Link technician name to profile page with technician ID as parameter -->
+        <h2><a href="/t_profile/<%= technician._id %>"><%= technician.firstName %> <%= technician.lastName %></a></h2>
                     <h2>Contact: <%= technician.name %></h2>
                     <h2>Location: <%= technician.location %></h2>
+                    <h2>Distance: <%= technician.distance >= 1 ? technician.distance.toFixed(2) + ' km' : Math.round(technician.distance * 1000) + ' m' %></h2>
+
                 </div>
             </li>
             <% }) %>

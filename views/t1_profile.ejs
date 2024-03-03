@@ -40,6 +40,21 @@
       </tr>
       </table>
     </section>
+<!-- Display previous client comments -->
+<h3>Previous Client Comments:</h3>
+<ul>
+    <% techniciandata.comments.forEach(comment => { %>
+    <li><%= comment %></li>
+    <% }) %>
+</ul>
+
+<!-- Form to allow new comments (for non-technician users) -->
+<% if (allowComment) { %>
+<form action="/t_profile/<%= techniciandata._id %>/comment" method="post">
+    <textarea name="comment" placeholder="Add your comment"></textarea>
+    <button type="submit">Submit Comment</button>
+</form>
+<% } %>
 
     </main>
   <!-- <script src="../JS/profile_t.js"></script> -->

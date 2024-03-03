@@ -12,21 +12,23 @@
 <body>
     <header>
         <h1>Technician Profile</h1><br>
-        <!-- <a href='/'>Go to login page</a> -->
-        <form action="/logout" method="post">
-            <button type="submit" class="logout-button">Logout</button>
-        </form>
+        <% if (!allowComment) { %>
+            <form action="/logout" method="post">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        <% } %>
     </header>
+    
 
     <div class="profile-container">
         <div class="profile-info">
             <h2><%= techniciandata.firstName %> <%= techniciandata.lastName %></h2>
             <p><%= techniciandata.service %></p>
-            <p><%= techniciandata.location %></p>
-            <!-- <p>5 years of experience</p>
-            <p>Rating: 4.8 stars (100 reviews)</p> -->
-            <a href="#">Edit Profile</a>
+            <% if (!allowComment) { %>
+                <a href="#">Edit Profile</a>
+            <% } %>
         </div>
+        
 
         <div class="services">
             <h3>Services That Should Be Offered</h3>
@@ -51,24 +53,30 @@
                     <li>Fixture installation and repair</li>
                     <li>Water heater installation and repair</li>
                 </ul>
-            <% } %>
-            
+            <% } %>  
         </div>
-
         <div class="contact">
             <h3>Contact Information</h3>
             <p>Phone: <%= techniciandata.name %></p>
-            <h3>location</h3>
-            <p>Location: <%=techniciandata.location %></p>
+            <!-- Display previous client comments -->
+<h3>Comments:</h3>
+<ul>
+    <% techniciandata.comments.forEach(comment => { %>
+    <li><%= comment %></li>
+    <% }) %>
+</ul>
+
+            <% if (allowComment) { %>
+                <form action="/t_profile/<%= techniciandata._id %>/comment" method="post">
+                    <textarea name="comment" placeholder="Add your comment"></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+                <% } %>
             <!-- <p>Address: <%= techniciandata.location %></p> -->
         </div>
+<!-- Form to allow new comments (for non-technician users) -->
 
-        <!-- <div class="availability">
-            <h3>Availability</h3>
-            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
-            <p>Saturday: 10:00 AM - 2:00 PM</p>
-            <p>Closed on Sundays</p>
-        </div> -->
+        
     </div>
 
     <footer>

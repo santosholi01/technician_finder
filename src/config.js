@@ -64,7 +64,8 @@ const Loginschema = new mongoose.Schema({
         type: String,
         enum: ['client', 'technician'], //possible value for role
         required: true
-    }
+    },
+    comments:[String]
 });
 
 

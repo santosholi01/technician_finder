@@ -87,7 +87,7 @@ app.get("/technicians", requireLogin, async (req, res) => {
 });
 
 
-//Route to display the technician's profile after signup
+// Route to display the technician's profile after signup
 app.get("/t_profile/:id", requireLogin, async (req, res) => {
     try {
         // Set cache-control headers to prevent caching
@@ -95,20 +95,27 @@ app.get("/t_profile/:id", requireLogin, async (req, res) => {
         res.setHeader('Pragma', 'no-cache');
         res.setHeader('Expires', '0');
 
-        
-        const technician = await collection.findById(req.params.id)
-        if (technician) {
-            res.render("t_profile", { techniciandata: technician })
+        const technicianId = req.params.id;
+        const technician = await collection.findById(technicianId);
 
-        } else {
-            res.status(404).send("Technician not found")
+        if (!technician) {
+            return res.status(404).send("Technician not found");
         }
 
+        // Check if the logged-in user is a technician
+        if (req.session.user.role === 'technician') {
+            // If technician, render the technician profile page without comment form
+            return res.render("t_profile", { techniciandata: technician, allowComment: false });
+        } else {
+            // If not technician, render the technician profile page with comment form
+            return res.render("t_profile", { techniciandata: technician, allowComment: true });
+        }
     } catch (error) {
-        console.error("Error fetching technician:", error)
-        res.status(500).send("Internal server error")
+        console.error("Error fetching technician:", error);
+        res.status(500).send("Internal server error");
     }
 });
+
 
 // Route to render the user profile page
 app.get("/u_profile", requireLogin, async (req, res) => {
@@ -322,17 +329,38 @@ app.get("/filter", requireLogin, async (req, res) => {
             return { ...technician.toObject(), distance };
         });
 
+        // Filter technicians within 5 km range
+        const techniciansWithinRange = techniciansWithDistance.filter(technician => technician.distance <= 50);
+
         // Sort the technicians based on distance from the user
-        techniciansWithDistance.sort((a, b) => a.distance - b.distance);
+        techniciansWithinRange.sort((a, b) => a.distance - b.distance);
 
-        console.log("Technicians with Distance:", techniciansWithDistance);
+        console.log("Technicians within 5 km Distance:", techniciansWithinRange);
 
-        res.render("filter_technician", { technicianlist: techniciansWithDistance, service: service });
+        res.render("filter_technician", { technicianlist: techniciansWithinRange, service: service });
     } catch (error) {
         console.error("Error retrieving technicians:", error);
         res.status(500).send("Internal server error");
     }
 });
+
+// Route to handle submission of new comments for the technician
+app.post("/t_profile/:id/comment", requireLogin, async (req, res) => {
+    try {
+        const technicianId = req.params.id;
+        const comment = req.body.comment;
+
+        // Find the technician by ID and update the comments array
+        await collection.findByIdAndUpdate(technicianId, { $push: { comments: comment } });
+
+        // Redirect back to the technician's profile page after adding the comment
+        res.redirect(`/t_profile/${technicianId}`);
+    } catch (error) {
+        console.error("Error adding comment:", error);
+        res.status(500).send("Internal server error");
+    }
+});
+
 
 
 
